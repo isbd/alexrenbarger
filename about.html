@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Renbarger</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .artist-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            position: relative;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 16px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 2fr minmax(250px, 1fr);
+            gap: 4rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .headshot {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            margin-top: 6rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .artist-text {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #020202;
+        }
+
+        .content-section {
+            padding-right: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: #6d5523;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 200px 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+        }
+
+        .contact-section {
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #333;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: white;
+            text-align: center;
+        }
+        .contact-section a {
+            color: #87CEFA; /* Light blue color */
+            text-decoration: none; /* Removes underline if desired */
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="artist-name">About Alex Renbarger</div>
+        <nav>
+            <a href="/alexrenbarger/index.html">Home</a>
+            <div class="dropdown">
+                <a href="/alexrenbarger/work.html">Work</a>
+                <!-- <div class="dropdown-content">
+                    <a href="#recent">Recent Work</a>
+                    <a href="#earlier">Earlier Work</a>
+                </div> -->
+            </div>
+            <a href="#main-content">About</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">            
+            <div class="content-section">
+                <section>
+                    <h3>Artist Statement</h3>
+                    <div class="artist-text">My work explores 'universal everyday living spaces' using AI tools like Midjourney, DALL-E 2, and Adobe Firefly, neural networks that generate visuals from prompts like 'vernacular living room.' These AI-generated images are edited with Photoshop to create composite collages, blending AI collaboration with my artistic goals. These collages serve as blueprints for paintings, merging technology with personal narrative to capture both universal and personal perspectives.</div>
+                    <div class="artist-text">Intimately scaled paintings of aura-filled interior spaces are dramatically intensified by cinematic lighting and vibrant but limited color palettes. These works, devoid of figures, create solitary environments that draw the viewer into moments of temporal displacement and quiet, found in the stillness of night and the nuanced light of dusk. Raised in a household where visibility often meant vulnerability, my pieces reflect a desire for peace and self-possession— spaces untouched by others, conflict, and self-doubt. </div>
+                </section>
+
+                <section>
+                    <h3>Biography</h3>
+                    <div class="artist-text">Alex Renbarger (b.1999) specializes in painting isolated interior scenes with intense lighting and vivid colors, based on AI-generated images. She graduated from Texas State University in San Marcos, TX, with a BFA in studio art and is currently attending UNL’s graduate program in painting and drawing. Select exhibitions include Non-Human Human: the 2nd International AI Art Exhibition at the CICA Museum in Gimpo, Gyeonggi-do, South Korea (upcoming), the Graduate Juried Exhibition at the University of Mississippi in Oxford, MS; Smoke & Mirrors at the Medici Gallery in Lincoln, NE; UARK x UNL Exchange at Sugar Gallery in Fayetteville, AR; The Artist’s Studio at Spellerberg Projects Main St. Gallery in Lockhart, TX; Illusions of Reverie at Texas State Galleries in San Marcos, TX; and Here and There at Clamplight Gallery in San Antonio, TX.</div>
+                </section>
+            </div>
+            <div class="profile-section">
+                <img src="assets/images/headshot.jpg" alt="Artist Headshot" class="headshot">
+            </div>
+        </div>
+    </main>
+
+    <section id="contact" class="contact-section">
+        <h2>Contact</h2>
+        <p>Email: renbargeralex@gmail.com</p>
+        <p>Instagram: <a href="https://instagram.com/alex_renbarger_art" target="_blank" rel="noopener noreferrer">@alex_renbarger_art</a></p></p>
+        <p>402-782-1292</p>
+    </section>
+</body>
+
+</html>

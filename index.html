@@ -1,28 +1,238 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alex Renbarger</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .artist-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            position: relative;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 16px;
+        }
+
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 310px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-section {
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #333;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: white;
+            text-align: center;
+        }
+        .contact-section a {
+            color: #87CEFA; /* Light blue color */
+            text-decoration: none; /* Removes underline if desired */
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+        }
+
+        .modal-content {
+            display: flex;
+            position: relative;
+            margin: auto;
+            width: 90%;
+            height: 90%;
+            max-width: 1200px;
+        }
+
+        .modal img {
+            max-width: 70%;
+            max-height: 90vh;
+            margin: auto;
+            object-fit: contain;
+        }
+
+        .modal-info {
+            width: 30%;
+            background-color: white;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .close {
+            position: absolute;
+            right: 2rem;
+            top: 1rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .nav-arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .nav-arrows span {
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Test</h1>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At repudiandae sed accusamus labore magnam, incidunt
-        tempore tenetur tempora, delectus ullam dolore pariatur ipsam ipsum cum dicta exercitationem eos deserunt in.
-    </p>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At repudiandae sed accusamus labore magnam, incidunt
-        tempore tenetur tempora, delectus ullam dolore pariatur ipsam ipsum cum dicta exercitationem eos deserunt in.
-    </p>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At repudiandae sed accusamus labore magnam, incidunt
-        tempore tenetur tempora, delectus ullam dolore pariatur ipsam ipsum cum dicta exercitationem eos deserunt in.
-    </p>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At repudiandae sed accusamus labore magnam, incidunt
-        tempore tenetur tempora, delectus ullam dolore pariatur ipsam ipsum cum dicta exercitationem eos deserunt in.
-    </p>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At repudiandae sed accusamus labore magnam, incidunt
-        tempore tenetur tempora, delectus ullam dolore pariatur ipsam ipsum cum dicta exercitationem eos deserunt in.
-    </p>
+    <header class="header">
+        <div class="artist-name">Alex Renbarger</div>
+        <nav>
+            <a href="#home">Home</a>
+            <div class="dropdown">
+                <a href="/alexrenbarger/work.html">Work</a>
+                <!-- <div class="dropdown-content">
+                    <a href="#recent">Recent Work</a>
+                    <a href="#earlier">Earlier Work</a>
+                </div> -->
+            </div>
+            <a href="/alexrenbarger/about.html">About</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section id="home" class="gallery">
+            <img src="assets/images/image1.jpg" alt="Evening Draft, 2024" data-title="Evening Draft, 2024"
+                data-medium="Oil on canvas" data-size="22&quot; x 22&quot;" onclick="openModal(this)">
+            <img src="assets/images/image2.jpg" alt="Plaid Couch, 2024" data-title="Plaid Couch, 2024"
+                data-medium="Oil on canvas" data-size="22&quot; x 22&quot;" onclick="openModal(this)">
+            <img src="assets/images/image3.jpg" alt="Cast Light, 2024" data-title="Cast Light, 2024"
+                data-medium="Oil on canvas" data-size="22&quot; x 22&quot;" onclick="openModal(this)">
+            <img src="assets/images/image4.jpg" alt="Nocturnal, 2024" data-title="Nocturnal, 2024"
+                data-medium="Oil on canvas" data-size="22&quot; x 22&quot;" onclick="openModal(this)">
+            <img src="assets/images/image5.jpg" alt="Lamp Glow, 2024" data-title="Lamp Glow, 2024"
+                data-medium="Oil on canvas" data-size="22&quot; x 22&quot;" onclick="openModal(this)">
+            <img src="assets/images/image6.jpg" alt="Reflection, 2024" data-title="Reflection, 2024"
+                data-medium="Oil on canvas" data-size="14&quot; x 14&quot;" onclick="openModal(this)">
+        </section>
+    </main>
+
+    <section id="contact" class="contact-section">
+        <h2>Contact</h2>
+        <p>Email: renbargeralex@gmail.com</p>
+        <p>Instagram: <a href="https://instagram.com/alex_renbarger_art" target="_blank" rel="noopener noreferrer">@alex_renbarger_art</a></p></p>
+        <p>402-782-1292</p>
+    </section>
+
+    <div class="modal" id="imageModal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Modal Image">
+            <div class="modal-info">
+                <h2>Artwork Title</h2>
+                <p>Type</p>
+                <p>Size"</p>
+            </div>
+        </div>
+        <div class="nav-arrows">
+            <span onclick="navigateImages(-1)">&#10094;</span>
+            <span onclick="navigateImages(1)">&#10095;</span>
+        </div>
+    </div>
+
+    <script>
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.gallery img');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+    </script>
+
+    <script src="js/modal.js"></script>
 </body>
 
 </html>
