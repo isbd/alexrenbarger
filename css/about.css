@@ -1,0 +1,44 @@
+/* about.css */
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  padding: 2rem;
+}
+
+.headshot {
+  width: 100%;
+  max-width: 400px;
+  height: auto;         /* never set a fixed height on a portrait photo */
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr 1fr;  /* equal columns, less cramped */
+    gap: 2rem;
+  }
+}
+
+/* Mobile: fully stack */
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-section {
+    order: -1;           /* moves photo above the text on mobile */
+  }
+
+  .headshot {
+    max-width: 260px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .content-section {
+    padding-right: 0;
+  }
+}

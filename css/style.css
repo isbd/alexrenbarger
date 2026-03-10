@@ -1,0 +1,242 @@
+/* ── RESET & BASE ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.6;
+  color: #222;
+}
+
+/* ── HEADER ── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+}
+
+.artist-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+}
+
+nav {
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+/* ── MAIN / GALLERY ── */
+.main-content {
+  margin-top: 70px; /* matches header height */
+  padding: 2rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+  gap: 1rem;
+}
+
+.gallery img {
+  width: 100%;
+  height: 310px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.25s, opacity 0.25s;
+  display: block;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+  opacity: 0.92;
+}
+
+/* ── FOOTER ── */
+.contact-section {
+  padding: 2.5rem 2rem;
+  background: #333;
+  color: white;
+  text-align: center;
+}
+
+.contact-section h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.contact-section p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.contact-section a {
+  color: #87cefa;
+  text-decoration: none;
+}
+
+.contact-section a:hover {
+  text-decoration: underline;
+}
+
+/* ── MODAL ── */
+.modal {
+  display: none; /* shown via JS: modal.style.display = 'flex' */
+  position: fixed;
+  inset: 0; /* shorthand for top/right/bottom/left: 0 */
+  background: rgba(0,0,0,0.92);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  display: flex;
+  width: 90vw;
+  max-width: 1100px;
+  max-height: 90vh;
+  background: white;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.modal-content img {
+  width: 70%;
+  max-height: 90vh;
+  object-fit: contain;
+  background: #111;
+  flex-shrink: 0;
+}
+
+.modal-info {
+  width: 30%;
+  padding: 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modal-info h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-info p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.modal-close {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 201;
+}
+
+.modal-nav {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2rem;
+}
+
+.modal-nav button {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.modal-nav button:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ── RESPONSIVE ── */
+
+/* Tablet: 2 columns */
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .modal-content {
+    flex-direction: column;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .modal-content img {
+    width: 100%;
+    max-height: 55vh;
+  }
+
+  .modal-info {
+    width: 100%;
+    padding: 1.25rem;
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 560px) {
+  .header {
+    padding: 0.75rem 1rem;
+  }
+
+  nav {
+    gap: 1rem;
+  }
+
+  .artist-name {
+    font-size: 1.1rem;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .gallery img {
+    height: 260px;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+}
